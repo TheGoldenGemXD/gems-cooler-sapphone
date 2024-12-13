@@ -1,6 +1,7 @@
 import importlib
 import importlib.util
 import os
+import sys
 
 # I copied this structure from an older project completely unrelated to sapphone
 # and this could really be written better
@@ -15,6 +16,9 @@ def plugins_in_directory(directory):
         # Remove pycache folder from returned list bc i dont test things properly
         # Pycharm for the love of god stop spellchecking my comments
         if "__pycache__" in i:
+            dirlist.remove(i)
+        # Temporary fix: don't load SAPI on Linux
+        if sys.platform not in ["win32", "cygwin"] and "sapi" in i:
             dirlist.remove(i)
     return dirlist
 
