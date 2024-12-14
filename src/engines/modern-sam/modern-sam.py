@@ -9,7 +9,7 @@ ConfigStructure = {
     },
     "pronunciation": {
         "phonetic": {"type": "bool", "default": False},
-        "sing": {"type": "bool", "default": False}
+        "sing": {"type": "bool", "default": False},
         "moderncmu": {"type": "bool", "default": False}
     },
     "engine": {
