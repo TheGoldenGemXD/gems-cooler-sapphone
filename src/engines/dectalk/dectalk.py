@@ -41,7 +41,9 @@ class SapphoneEngine:
     def speak_to_file(self, script, output):
         if sys.platform in ["win32", "cygwin"]:
             self.dectalk_windows(script, output)
-        elif sys.platform in ["linux"]:
+        elif sys.platform == "linux":
             self.dectalk_linux(script, output)
-
+        elif sys.platform == "darwin":
+            print("I am so sorry.")
+            raise OSError
 
