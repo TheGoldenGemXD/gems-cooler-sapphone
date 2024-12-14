@@ -39,8 +39,8 @@ class SapphoneEngine:
 
     def speak_to_file(self, script, output):
         if sys.platform in ["win32", "cygwin"]:
-            return self.dectalk_windows(script, output)
-        elif sys.platform in ["linux", "darwin"]:
-            return self.dectalk_linux(script, output)
+            self.dectalk_windows(script, output)
+        elif sys.platform in ["linux"]:
+            self.dectalk_linux(script, output)
 
 
