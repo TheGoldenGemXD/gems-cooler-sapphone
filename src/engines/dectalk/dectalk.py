@@ -26,6 +26,7 @@ class SapphoneEngine:
         args += ["-w", output]
         #args.append(script)
         subprocess.run(args, shell=False, check=True, input=script, text=True)
+
     def dectalk_linux(self, script, output):
         args = []
         args += [self.config["engine"]["path_to_executable"]]
