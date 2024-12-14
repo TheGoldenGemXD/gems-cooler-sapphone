@@ -25,7 +25,7 @@ tts:
         suffix: ""
       engine:
         path_to_executable: '/home/gelvetica/dectalk/say'
-    sam:
+    modern-sam:
       voice:
         speed: 72
         pitch: 64
@@ -34,8 +34,9 @@ tts:
       pronunciation:
         phonetic: false
         sing: false
+        moderncmu: true
       engine:
-        path_to_executable: '/home/gelvetica/SAM/sam'
+        path_to_executable: '/home/gelvetica/SAM/sam-linux'
 # Substitute words in the message before reading aloud
 basic_substitutions:
   # target: replacement
