@@ -24,7 +24,8 @@ class SapphoneEngine:
         if self.config["advanced"]["suffix"] != "":
             args += ["-post", self.config["advanced"]["suffix"]]
         args += ["-w", output]
-        subprocess.run(args, shell=False, check=True)
+        #args.append(script)
+        subprocess.run(args, shell=False, check=True, input=script, text=True)
     def dectalk_linux(self, script, output):
         args = []
         args += [self.config["engine"]["path_to_executable"]]
