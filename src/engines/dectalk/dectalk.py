@@ -1,39 +1,42 @@
 import subprocess
 import sys
+from pydantic import BaseModel, Field
 
-ConfigStructure = {
-    "advanced": {
-        "prefix": {"type": "string", "default": ""},
-        "suffix": {"type": "string", "default": ""}
-    },
-    "engine": {
-        "path_to_executable": {"type": "string", "default": ""}
-    }
-}
 
+class AdvancedConfig(BaseModel):
+    prefix: str = Field(default="", title="Prefix", description="Text to be passed to DECtalk Software before the normal input. The prefix text is \"forced\" out before the input text is read.")
+    suffix: str = Field(default="", title="Suffix", description="Text to be passed to DECtalk Software after the normal input. ")
+
+class EngineConfig(BaseModel):
+    path_to_executable: str = Field(title="Path to executable", description="The path to your DECtalk say executable.")
+
+class ConfigModel(BaseModel):
+    advanced: AdvancedConfig = Field(title="Advanced", default_factory=AdvancedConfig)
+    engine: EngineConfig = Field(title="Engine", default_factory=EngineConfig)
 
 class SapphoneEngine:
-    def __init__(self, config):
-        self.config = config
+    ConfigModel = ConfigModel
+    def __init__(self, config: ConfigModel):
+        self.config: ConfigModel = config
 
     def dectalk_windows(self, script, output):
         args = []
-        args += [self.config["engine"]["path_to_executable"]]
-        if self.config["advanced"]["prefix"] != "":
-            args += ["-pre", self.config["advanced"]["prefix"]]
-        if self.config["advanced"]["suffix"] != "":
-            args += ["-post", self.config["advanced"]["suffix"]]
+        args += [self.config.engine.path_to_executable]
+        if self.config.advanced.prefix != "":
+            args += ["-pre", self.config.advanced.prefix]
+        if self.config.advanced.suffix != "":
+            args += ["-post", self.config.advanced.suffix]
         args += ["-w", output]
         #args.append(script)
         subprocess.run(args, shell=False, check=True, input=script, text=True)
 
     def dectalk_linux(self, script, output):
         args = []
-        args += [self.config["engine"]["path_to_executable"]]
-        if self.config["advanced"]["prefix"] != "":
-            args += ["-pre", self.config["advanced"]["prefix"]]
-        if self.config["advanced"]["suffix"] != "":
-            args += ["-post", self.config["advanced"]["suffix"]]
+        args += [self.config.engine.path_to_executable]
+        if self.config.advanced.prefix != "":
+            args += ["-pre", self.config.advanced.prefix]
+        if self.config.advanced.suffix != "":
+            args += ["-post", self.config.advanced.suffix]
         args += ["-fo", output]
         args += ["-a", script]
         subprocess.run(args, shell=False, check=True)
