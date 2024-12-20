@@ -13,13 +13,6 @@ except ImportError:
     stream = comtypes.client.CreateObject("SAPI.SpFileStream")
     from comtypes.gen import SpeechLib
 
-ConfigStructure = {
-    "voice": {
-        "voice": {"type": "string", "default": r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_DAVID_11.0"},
-        "rate": {"type": "int", "min": -10, "max": 10, "default": 0}
-    }
-}
-
 class VoiceModel(BaseModel):
     voice: str = Field(default=r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_DAVID_11.0", title="Voice")
     rate: float = Field(default=0, ge=-10, le=10, title="Rate")
