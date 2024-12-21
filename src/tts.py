@@ -1,7 +1,8 @@
 from typing import Type
-
+import os
 import plugins
 from pydantic import BaseModel
+
 
 class SapphoneEngine:
     ConfigModel: Type[BaseModel]
@@ -27,5 +28,5 @@ class SapphoneTTS:
 
 
 PluginManager = plugins.PluginManager()
-PluginManager.import_plugins_from_directory("engines")
+PluginManager.import_plugins_from_directory(os.path.join(os.path.dirname(os.path.realpath(__file__)), "engines"))
 engines = PluginManager.plugins
