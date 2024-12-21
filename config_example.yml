@@ -1,6 +1,11 @@
 # sapphone !!! :3
-# you have to change line 49 on main.py to point to your config, Lmbao
 # strings that use escapes (\) should be contained in 'single quotation marks'
+
+# SAPPHONE MINECRAFT GUIDE
+# target_pattern: '^.*<username> (.*)'
+# If your username begins with a "." you MUST have a "\" to the right of the "<"
+# Your target_file should point to the "logs/latest.log" in your Minecraft directory.
+# DO NOT open sapphone before Minecraft. You MUST open Minecraft to the title screen before starting sapphone.
 
 # file sapphone reads from
 target_file: '/home/gelvetica/PycharmProjects/sapphone/test.txt'
