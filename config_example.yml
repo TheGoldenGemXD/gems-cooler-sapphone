@@ -26,6 +26,9 @@ tts:
         rate: 0
     dectalk:
       advanced:
+        # Refer to the DECTalk in-line commands manual for options on customizing the voice.
+        # https://dectalk.github.io/dectalk/idh_ref_1_dectalk_software_in_line_commands_overview.htm
+        # These should go in your prefix.
         prefix: "[:phone on]"
         suffix: ""
       engine:
