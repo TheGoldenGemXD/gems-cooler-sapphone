@@ -57,8 +57,7 @@ basic_substitutions:
   # target: replacement
   dr: doctor
   bc: because
-# run re.sub on message before reading alou
+# run re.sub on message before reading aloud
 regex_substitutions:
   # pattern: string
   '\B:3\b': meow
-    
