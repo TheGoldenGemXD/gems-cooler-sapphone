@@ -6,6 +6,10 @@ If you're on Linux or MacOS, you can go cry in the corner because currently I do
 
 Or you could clone the repo, install the requirements.txt, install mpv media player, and run `pyinstaller sapphone.spec` from the root of the repo, and have it packaged up in `.dist/sapphone`!
 
+## Usage
+1. Run sapphone.
+2. Read the on-screen instructions.
+
 ## Extra Files
 The `dectalk` and `modern-sam` engines require files that cannot be included due to the licensing of these two softwares.
 
