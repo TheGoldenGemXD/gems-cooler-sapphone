@@ -22,7 +22,9 @@ tts:
     # engine: engine config
     sapi:
       voice:
-        voice: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0'
+        # The available voices will be different for each system
+        # You can view a list of available voices by running sapphone with this field left blank.
+        voice: 'Microsoft David Desktop'
         rate: 0
     dectalk:
       advanced:
