@@ -1,6 +1,6 @@
 # The incredible README for sapphone tts
 ## Installation
-If you're on Windows, you can a copy from the
+If you're on Windows, you can grab a copy from the
 [Releases page](https://github.com/Craftocracy/strudel-pack/releases/).
 If you're on Linux or MacOS, you can go cry in the corner because I don't really have a good way to package releases for these two.
 
