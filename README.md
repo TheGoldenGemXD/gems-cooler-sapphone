@@ -2,7 +2,7 @@
 ## Installation
 If you're on Windows, you can grab a copy from the
 [Releases page](https://github.com/Craftocracy/strudel-pack/releases/).
-If you're on Linux or MacOS, you can go cry in the corner because I don't really have a good way to package releases for these two.
+If you're on Linux or MacOS, you can go cry in the corner because currently I don't really have a good way to package releases for these two.
 
 Or you could clone the repo, install the requirements.txt, install mpv media player, and run `pyinstaller sapphone.spec` from the root of the repo, and have it packaged up in `.dist/sapphone`!
 
