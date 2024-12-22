@@ -1,6 +1,7 @@
 import re
 from typing import TextIO
-
+from platformdirs import PlatformDirs
+import sys
 import yaml
 import time
 import mpv
@@ -38,8 +39,21 @@ def follow(file: TextIO, rate):
 def replace(match):
     return REPL_INDEX[match.lastindex - 1]
 
+datadir = PlatformDirs("sapphone", "toasterovenxyz").user_data_dir
+if "SAPPHONE_DATADIR" in os.environ:
+    datadir = os.environ["SAPPHONE_DATADIR"]
+config_file = os.path.join(datadir, "config.yml")
+if not os.path.isdir(datadir):
+    os.makedirs(datadir)
+if not os.path.isfile(config_file):
+    print("You have no config file. Please place a filled out config.yml in:")
+    print(datadir)
+    print("\nRefer to the following page for a partially filled out config you can get started with:")
+    print("https://github.com/gelvetica/sapphone/blob/main/config_example.yml")
+    input("\nPress Enter to close...")
+    sys.exit(0)
 
-config = load_config("../config.yml")
+config = load_config(config_file)
 
 REPL_DICT = config["basic_substitutions"]
 REPL_PATTERN = re.compile("|".join(["\\b(" + v + ")\\b" for v in REPL_DICT.keys()]), flags=re.I)

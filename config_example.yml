@@ -1,6 +1,11 @@
 # sapphone !!! :3
-# you have to change line 49 on main.py to point to your config, Lmbao
 # strings that use escapes (\) should be contained in 'single quotation marks'
+
+# SAPPHONE MINECRAFT GUIDE
+# target_pattern: '^.*<username> (.*)'
+# If your username begins with a "." you MUST have a "\" to the right of the "<"
+# Your target_file should point to the "logs/latest.log" in your Minecraft directory.
+# DO NOT open sapphone before Minecraft. You MUST open Minecraft to the title screen before starting sapphone.
 
 # file sapphone reads from
 target_file: '/home/gelvetica/PycharmProjects/sapphone/test.txt'
@@ -17,10 +22,15 @@ tts:
     # engine: engine config
     sapi:
       voice:
-        voice: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0'
+        # The available voices will be different for each system
+        # You can view a list of available voices by running sapphone with this field left blank.
+        voice: 'Microsoft David Desktop'
         rate: 0
     dectalk:
       advanced:
+        # Refer to the DECTalk in-line commands manual for options on customizing the voice.
+        # https://dectalk.github.io/dectalk/idh_ref_1_dectalk_software_in_line_commands_overview.htm
+        # These should go in your prefix.
         prefix: "[:phone on]"
         suffix: ""
       engine:
@@ -49,8 +59,7 @@ basic_substitutions:
   # target: replacement
   dr: doctor
   bc: because
-# run re.sub on message before reading alou
+# run re.sub on message before reading aloud
 regex_substitutions:
   # pattern: string
   '\B:3\b': meow
-    

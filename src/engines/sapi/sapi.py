@@ -1,8 +1,10 @@
 # win32com might not be necessary here
 # pyttsx uses comtypes but it still depends on win32com ???
 from dataclasses import field
-
-from pydantic import BaseModel, Field
+from typing import Any
+from pydantic import BaseModel, Field, BeforeValidator, ValidationError
+from typing_extensions import Annotated
+import sys
 import win32com.client
 import comtypes.client
 try:
@@ -13,8 +15,25 @@ except ImportError:
     stream = comtypes.client.CreateObject("SAPI.SpFileStream")
     from comtypes.gen import SpeechLib
 
+# This is improper
+
+def voices_helper(value: Any) -> Any:
+    tts = win32com.client.Dispatch("SAPI.SpVoice")
+    voices = []
+    for i in tts.GetVoices():
+        voices.append(i.GetAttribute("Name"))
+    if value in voices:
+        return value
+    else:
+        print("Invalid voice selection, please set voice to one of the following:")
+        for i in voices:
+            print(i)
+        input("\nPress Enter to close...")
+        sys.exit(0)
+
+
 class VoiceModel(BaseModel):
-    voice: str = Field(default=r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_DAVID_11.0", title="Voice")
+    voice: Annotated[str, Field(default="default value that causes it to fail", validate_default=True, title="Voice"), BeforeValidator(voices_helper)]
     rate: float = Field(default=0, ge=-10, le=10, title="Rate")
 class ConfigModel(BaseModel):
     voice: VoiceModel = Field(default_factory=VoiceModel, title="Voice")
@@ -29,7 +48,7 @@ class SapphoneEngine:
         self.config = config
         self.tts = win32com.client.Dispatch("SAPI.SpVoice")
         for i in self.tts.GetVoices():
-            if i.Id == self.config.voice.voice:
+            if i.GetAttribute("Name") == self.config.voice.voice:
                 self.tts.Voice = i
         self.tts.Rate = self.config.voice.rate
 
