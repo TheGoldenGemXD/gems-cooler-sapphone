@@ -27,9 +27,9 @@ Note that sapphone does not currently support DECTalk on MacOS.
 ### modern-sam
 [Software Automatic Mouth](https://en.wikipedia.org/wiki/Software_Automatic_Mouth)
 was originally developed by Don't Ask Software. It was ported to C by [s-macke](https://github.com/s-macke), then Javascript by [discordier](https://github.com/discordier),
-with additional improvements by [reticivis-net](https://github.com/reticivis-net), who has also provided the following CLI packages.
-- [Windows](https://github.com/reticivis-net/sam-cli/releases/download/1.0.0/sam-win.exe)
-- [Linux](https://github.com/reticivis-net/sam-cli/releases/download/1.0.0/sam-linux)
-- [MacOS](https://github.com/reticivis-net/sam-cli/releases/download/1.0.0/sam-macos)
+with additional improvements by [machineonamission](https://github.com/machineonamission), who has also provided the following CLI packages.
+- [Windows](https://github.com/machineonamission/sam-cli/releases/download/1.0.0/sam-win.exe)
+- [Linux](https://github.com/machineonamission/sam-cli/releases/download/1.0.0/sam-linux)
+- [MacOS](https://github.com/machineonamission/sam-cli/releases/download/1.0.0/sam-macos)
 
 In the engine config, point `path_to_executable` to the absolute path of the file you have downloaded.
