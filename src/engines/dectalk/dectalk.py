@@ -59,5 +59,5 @@ class SapphoneEngine:
         elif sys.platform == "darwin":
             self.dectalk_macos(script, output)
         else:
-            raise OSError("kys tbh")
+            raise OSError("I'm so sorry. Please install a real OS. Or keep using FreeBSD because you're cool idk")
 
